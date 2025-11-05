@@ -2,22 +2,19 @@ import random
 from core.player import Player
 from core.orc import Orc
 from core.goblin import Goblin
+from core.base_competitor import BaseCompetitor
+from core.base_monster import BaseMonster
 
 class Game():
 
-  def roll_dice(self, attacker):
-    return random.randint(1, 20) + attacker.speed
-
-  def get_first_turn(self):
+  def roll_dice(self) -> BaseCompetitor:
     player_dice = self.player.roll_first_turn_dice()
     monster_dice = self.monster.roll_first_turn_dice()
-    if player_dice > monster_dice:
+    if player_dice >= monster_dice:
       return self.player
     else:
-      return self.monster 
+      return self.monster
 
-  def attack(self, attacker, defender):
-    pass
 
   def show_menu(self):
     user_input = None
@@ -37,10 +34,10 @@ class Game():
         continue
     return user_input
 
-  def create_player(self):
+  def create_player(self) -> Player:
     return Player("John")
 
-  def choose_random_monster(self):
+  def choose_random_monster(self) -> BaseMonster:
     return random.choice([Orc("Orc-BABI-123"), Goblin("Goblin-BABI-123")])
 
   def battle(self, competitor1, competitor2):
@@ -72,8 +69,8 @@ class Game():
     else:
       self.monster = self.choose_random_monster()
 
-      first_turn = self.get_first_turn()
-      if first_turn == self.player:
+      first_turn_competitor = self.roll_dice()
+      if first_turn_competitor == self.player:
         self.battle(self.player, self.monster)
       else:
         self.battle(self.monster, self.player)

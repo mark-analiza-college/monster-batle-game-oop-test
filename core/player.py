@@ -11,6 +11,8 @@ class Player(BaseCompetitor):
 
     if self.profession == "healer":
       self.hp = self.hp + 10
+    elif self.profession == "warrior":
+      self.power = self.power + 2
 
 
   def __str__(self):

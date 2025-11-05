@@ -7,7 +7,7 @@ class Goblin(BaseMonster):
     self.hp = 20
     self.type = "goblin"
     self.speed = random.randint(5, 10)
-    self.power = random.randint(5, 15)
+    self.power = random.randint(5, 10)
     self.armor_rating = 1
 
     

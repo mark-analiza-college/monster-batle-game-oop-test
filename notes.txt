@@ -1,0 +1,21 @@
+1. First, check your current Git configuration:
+$ git config --list --local
+
+2. Set the correct username for this repository only (replace with your actual GitHub username):
+git config --local user.name "mark-analiza-college"
+
+3. Set the correct email for this repository only:
+git config --local user.email "mark@analiza-college.co.il"
+
+4. Verify the local configuration:
+git config --list --local
+
+5. If you need to update the remote URL to use the correct username:
+git remote set-url origin git@github.com:mark-analiza-college/monster-batle-game-oop-test.git
+
+6. Then try pushing again:
+git push origin main
+
+Key points:
+Using --local flag ensures these settings only apply to this specific repository
+Your global Git configuration remains unchanged

@@ -14,7 +14,7 @@ class BaseCompetitor():
     return random.randint(1, 6) + self.speed
 
   def get_shield_attack_damage(self):
-    return random.randint(1, 20) + self.power
+    return random.randint(1, 20) + self.speed
 
   def get_damage_dice(self):
     return random.randint(1, 6) + self.power
