@@ -41,21 +41,20 @@ class Game():
     return random.choice([Orc("Orc-BABI-123"), Goblin("Goblin-BABI-123")])
 
   def battle(self, competitor1, competitor2):
-     competitor1.attack(competitor2)
-     print(f"{competitor1.name} attacks {competitor2.name} he has {competitor2.hp} hp left!")
-     print("===================================================")
-     if(competitor2.hp <= 0):
-      print(f"{competitor1.name} wins!")
-      return
-     else:
-      competitor2.attack(competitor1)
-      print(f"{competitor2.name} attacks {competitor1.name} he has {competitor1.hp} hp left!")
+    while competitor1.hp > 0 and competitor2.hp > 0:
+      competitor1.attack(competitor2)
+      print(f"{competitor1.name} attacks {competitor2.name} he has {competitor2.hp} hp left!")
       print("===================================================")
-      if(competitor1.hp <= 0):
-        print(f"{competitor2.name} wins!")
+      if(competitor2.hp <= 0):
+        print(f"{competitor1.name} wins!")
         return
       else:
-        self.battle(competitor1, competitor2)
+        competitor2.attack(competitor1)
+        print(f"{competitor2.name} attacks {competitor1.name} he has {competitor1.hp} hp left!")
+        print("===================================================")
+        if(competitor1.hp <= 0):
+          print(f"{competitor2.name} wins!")
+          return
   
   def start(self):
 
